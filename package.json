@@ -1,0 +1,26 @@
+{
+  "name": "shyboy",
+  "version": "1.0.0",
+  "description": "Implementation of a one-class classifier",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/itsmealves/shyboy.git"
+  },
+  "keywords": [
+    "machine",
+    "learning",
+    "classifier",
+    "one-class",
+    "graph"
+  ],
+  "author": "Gabriel Alves",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/itsmealves/shyboy/issues"
+  },
+  "homepage": "https://github.com/itsmealves/shyboy#readme"
+}
