@@ -3,15 +3,21 @@ const Classifier = require('./model/classifier');
 const CsvProvider = require('./data/csvProvider');
 const Normalization = require('./data/normalization');
 
+const examples = [
+    [5.4,3.9,1.7,0.4],
+    [5.4,3.9,1.7,0.4],
+    [5.4,3.9,1.7,0.4]
+];
+
 const classifier = new Classifier({
     maxCycles: 300
 });
 
 const dataProvider = new CsvProvider({
-    divideByClasses: true,
-    trainingProportion: 0.7,
     testingProportion: 0.3,
-    datasetPath: 'iris.data'
+    trainingProportion: 0.7,
+    datasetPath: 'iris.data',
+    trainingClass: 'Iris-setosa',
 });
 
 const engine = new Engine({
@@ -19,7 +25,10 @@ const engine = new Engine({
     provider: dataProvider
 });
 
-engine.start()
-      .train()
-      .validate()
-      .testAgainst(examples);
+
+engine.train(() => {
+    engine.validate(() => {
+        engine.testAgainst(() => {}, examples);
+    });
+});
+
