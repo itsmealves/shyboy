@@ -7,11 +7,11 @@ const Engine = function(settings) {
 
 Engine.prototype.run = function(procedure, callback) {
     const model = this.model;
-    const onSuccess = function(fullDataset, trainingDataset, testingDataset) {
+    const onSuccess = function(sets) {
         console.log('[ENGINE] (INFO) Running procedure \'' + procedure + '\'');
 
         const toExecute = model[procedure];
-        toExecute(fullDataset, trainingDataset, testingDataset);
+        toExecute(sets);
         callback();
     };
 

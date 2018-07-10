@@ -10,6 +10,8 @@ const examples = [
 ];
 
 const classifier = new Classifier({
+    gamma: 2,
+    threshold: 0.1,
     maxCycles: 300
 });
 

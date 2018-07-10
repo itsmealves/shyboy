@@ -35,9 +35,10 @@ CsvProvider.prototype.run = function() {
             
             const entityClass = data[lastIndex];
             const entityData = data.slice(0, lastIndex);
-            const entity = entityData.map(v => {
-                return parseFloat(v);
-            });
+            const entity = {
+                id: dataset.length,
+                data: entityData.map(v => parseFloat(v))
+            };
 
             dataset.full.push(entity);
 
@@ -66,7 +67,9 @@ CsvProvider.prototype.run = function() {
             }
             
             console.log('[CsvProvider] (INFO) Datasets ready');
-            resolve(dataset.full, trainingDataset, testingDataset);
+
+            const sets = {full: dataset.full, trainingDataset, testingDataset};
+            resolve(sets);
         });
     });
 };
